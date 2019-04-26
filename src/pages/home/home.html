@@ -1,14 +1,33 @@
-<ion-header>
-  <ion-navbar>
-    <ion-title>
-      Ionic Blank
-    </ion-title>
-  </ion-navbar>
-</ion-header>
 
+<ion-header no-border>
+ 
+</ion-header>
 <ion-content padding>
-  The world is your oyster.
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will be your guide.
-  </p>
+    <div class="chats">
+      <div class="chatbox">
+        <div *ngFor="let chat of chat">
+          <div class="message sent" *ngIf="chat.question!='' && chat.question!=null">
+            {{chat.question}}
+            
+          </div>
+          <div class="message received"  *ngIf="chat.answer!='' && chat.answer!=null">
+            {{chat.answer}}
+            
+          </div>
+        </div>
+      </div>
+      </div>
+
+  
 </ion-content>
+
+
+<ion-footer>
+    <ion-item>
+    <ion-input [(ngModel)]="question" name="message" placeholder="Ask me anything"></ion-input>
+    <button ion-button (click)="ask(question)" item-right  color="orange"> <ion-icon  name="send" ></ion-icon></button>
+    <button ion-button (click)="startListen()" item-right > <ion-icon  name="microphone" ></ion-icon></button>
+  
+  </ion-item>
+</ion-footer>
+
